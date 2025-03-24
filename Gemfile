@@ -67,3 +67,9 @@ group :test do
 end
 
 gem "faker"
+
+# bootstrap
+gem "sassc-rails"
+gem "bootstrap", "~> 5.2"
+
+gem 'simple_form'

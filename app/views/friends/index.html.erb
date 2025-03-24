@@ -1,15 +1,31 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Friends</h1>
-
-<div id="friends">
-  <% @friends.each do |friend| %>
-    <%= render friend %>
-    <p>
-      <%= link_to "Show this friend", friend %>
-    </p>
-    
-  <% end %>
-</div>
-
-<%= link_to "New friend", new_friend_path %>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col" colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody class="table-hover">
+    <% @friends.each do |friend| %>
+      <tr id="friends">
+        <td><%= "#{friend.first_name}" %></td>
+        <td><%= "#{friend.last_name}"  %></td>
+        <td><%= "#{friend.email}"      %></td>
+        <td><%= "#{friend.address}"    %></td>
+        <td><%= link_to "Show", friend_path(friend),
+                class:"btn btn-primary btn-sm" %>
+        </td>
+        <td><%= link_to "Edit", edit_friend_path(friend),
+                class: "btn btn-warning btn-sm" %>
+        </td>
+        <td><%= render "shared/btn_delete_friend",
+                locals: { friendPath: friend_path(friend) }
+            %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

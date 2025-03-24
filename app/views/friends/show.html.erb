@@ -1,10 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="jumbotron">
+  <h1 class="display-4">
+    <%= @friend.first_name %>
+    <%= @friend.last_name %>
+  </h1>
+  <p class="lead">
+    <%= @friend.email %> | <%= @friend.address %>
+  </p>
+  <br/>
 
-<%= render @friend %>
-
-<div>
-  <%= link_to "Edit this friend", edit_friend_path(@friend) %> |
-  <%= link_to "Back to friends", friends_path %>
-
-  <%= button_to "Destroy this friend", @friend, method: :delete %>
+  <div class="d-flex">
+    <%= link_to "Edit", edit_friend_path(@friend),
+        class: "btn btn-warning me-2"
+    %>
+    <%= render "shared/btn_delete_friend",
+        locals: { friendPath: friend_path(@friend) }
+    %>
+  </div>
 </div>
